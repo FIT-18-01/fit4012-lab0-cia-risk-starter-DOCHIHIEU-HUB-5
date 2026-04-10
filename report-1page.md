@@ -20,14 +20,14 @@
 - Hệ thống server lưu điểm
 
 **CIA mapping:**
-- Sự cố A (không đăng nhập được) -> **Availability**
-- Sự cố B (điểm bị thay đổi) -> **Integrity**
-- Sự cố C (danh sách điểm bị lộ) -> **Confidentiality**
+- Sự cố A -> Availability (hệ thống không khả dụng)
+- Sự cố B -> Integrity (dữ liệu bị thay đổi trái phép)
+- Sự cố C -> Confidentiality (dữ liệu bị tiết lộ trái phép)
 
 **Phân tích sự cố B:**
-- **Threat:** Unauthorized modification - Kẻ tấn công hoặc người dùng nội bộ thay đổi điểm sinh viên
-- **Vulnerability:** Thiếu RBAC, không có audit log, xác thực yếu, không validate input
-- **Mitigation:** Implement RBAC, MFA, audit logging, approval workflow, regular backup & integrity checking 
+- Threat: Unauthorized modification - Kẻ tấn công hoặc người dùng nội bộ thay đổi điểm sinh viên
+- Vulnerability: Thiếu RBAC, không có audit log, xác thực yếu, không validate input
+- Mitigation: Implement RBAC, MFA, audit logging, approval workflow, regular backup & integrity checking 
 
 ### 4. Kết luận
 Từ bài lab này, em học được rằng mỗi sự cố bảo mật có thể được phân loại theo CIA - một framework cơ bản nhưng rất quan trọng trong an toàn thông tin. Phần khó nhất là hiểu mối liên hệ giữa threat, vulnerability và mitigation - chúng không phải lúc nào cũng rõ ràng. Khi phân tích, cần chú ý: (1) xác định rõ asset bị ảnh hưởng, (2) phân loại theo CIA trước, (3) tìm threat cụ thể, (4) liệt kê vulnerability thực tế, (5) đề xuất mitigation khả thi. Đặc biệt, phải cân nhân ưu tiên xử lý dựa trên mức độ ảnh hưởng đến người dùng.

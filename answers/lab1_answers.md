@@ -19,23 +19,18 @@ Liệt kê ít nhất 2 assets cần bảo vệ.
 ---
 
 ## 2. Mapping CIA
-Ghép từng sự cố với CIA (Format: incident_a, incident_b, incident_c).
+Ghép từng sự cố với CIA.
 
-- incident_a: A (Availability) - Sự cố A (sinh viên không đăng nhập được) -> Hệ thống không khả dụng
-- incident_b: I (Integrity) - Sự cố B (điểm bị đổi 8.0 → 5.0) -> Dữ liệu bị thay đổi trái phép
-- incident_c: C (Confidentiality) - Sự cố C (danh sách điểm bị lộ) -> Dữ liệu bị tiết lộ trái phép
+- Sự cố A -> A (Availability) - Hệ thống không khả dụng
+- Sự cố B -> I (Integrity) - Dữ liệu bị thay đổi trái phép
+- Sự cố C -> C (Confidentiality) - Dữ liệu bị tiết lộ trái phép
 
 ---
 
 ## 3. Phân tích sự cố B
-- **threat:** Unauthorized modification - Kẻ tấn công hoặc người dùng nội bộ (giảng viên, quản trị) thay đổi trái phép điểm của sinh viên
-- **vulnerability:** Thiếu access control (RBAC) - không phân quyền rõ ràng giữa giảng viên và admin; Không có audit log - không ghi nhận lịch sử thay đổi để truy vết; Hệ thống thừa tin tài khoản - không xác thực danh tính khi thực hiện thay đổi quan trọng; Input validation yếu - có thể nhập giá trị lạ
-- **Mitigation:**
-  - Implement Role-Based Access Control (RBAC) - giảng viên chỉ có quyền sửa điểm của lớp mình
-  - Bắt buộc Multi-Factor Authentication (MFA) cho các tài khoản có quyền chỉnh sửa
-  - Implement audit logging - ghi nhận mọi thay đổi điểm (ai, khi nào, từ giá trị nào sang giá trị nào)
-  - Require approval workflow - thay đổi điểm cần phê duyệt từ quản trị viên
-  - Regular backup và integrity checking - sao lưu định kỳ và kiểm tra tính toàn vẹn dữ liệu
+- Threat: Unauthorized modification - Kẻ tấn công hoặc người dùng nội bộ (giảng viên, quản trị) thay đổi trái phép điểm của sinh viên
+- Vulnerability: Thiếu access control (RBAC) - không phân quyền rõ ràng; Không có audit log - không ghi nhận lịch sử; Hệ thống thừa tin - không xác thực danh tính; Input validation yếu - có thể nhập giá trị lạ
+- Mitigation: Implement RBAC với quyền riêng biệt; Bắt buộc MFA cho tài khoản có quyền chỉnh sửa; Implement audit logging ghi nhận mọi thay đổi; Require approval workflow cho sự thay đổi; Regular backup và integrity checking
 
 ---
 
